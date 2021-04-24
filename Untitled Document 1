@@ -1,0 +1,1479 @@
+gaurav@ubuntu:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("01de23f5-d0fd-41c7-91a9-2d991ed04510") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] 
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] 
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] 
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use test
+switched to db test
+> exit
+bye
+gaurav@ubuntu:~$ mongoimport --type csv -d automobile -c inventory --headerlinev --drop /home/gaurav/Downloads/automobile_data.csv
+2021-04-18T23:47:39.993-0700	error parsing command line options: unknown option "headerlinev"
+2021-04-18T23:47:39.993-0700	try 'mongoimport --help' for more information
+gaurav@ubuntu:~$ mongoimport --type csv -d automobile -c inventory --headerline --drop /home/gaurav/Downloads/automobile_data.csv
+2021-04-18T23:48:11.513-0700	Failed: open /home/gaurav/Downloads/automobile_data.csv: no such file or directory
+2021-04-18T23:48:11.513-0700	imported 0 documents
+gaurav@ubuntu:~$ mongoimport --type csv -d automobile -c inventory --headerline --drop /home/gaurav/Downloads/automobile.csv
+2021-04-18T23:50:53.193-0700	Failed: open /home/gaurav/Downloads/automobile.csv: no such file or directory
+2021-04-18T23:50:53.193-0700	imported 0 documents
+gaurav@ubuntu:~$ mongoimport --type csv -d automobile -c inventory --headerline --drop /home/gaurav/Downloads/automobile_data.csv
+2021-04-18T23:52:57.903-0700	Failed: open /home/gaurav/Downloads/automobile_data.csv: no such file or directory
+2021-04-18T23:52:57.903-0700	imported 0 documents
+gaurav@ubuntu:~$ mongoimport --type csv -d automobile -c inventory --headerline --drop /home/gaurav/Downloads/automobile_data.csv
+2021-04-18T23:55:18.573-0700	Failed: open /home/gaurav/Downloads/automobile_data.csv: no such file or directory
+2021-04-18T23:55:18.573-0700	imported 0 documents
+gaurav@ubuntu:~$ mongoimport --type csv -d automobile -c inventory --headerline --drop /home/gaurav/Downloads/Automobile_data.csv
+2021-04-18T23:57:09.475-0700	connected to: localhost
+2021-04-18T23:57:09.487-0700	dropping: automobile.inventory
+2021-04-18T23:57:09.550-0700	imported 205 documents
+gaurav@ubuntu:~$ mongoimport --db automobile --collection inventory --file /home/gaurav/Automobile_data.csv
+2021-04-19T00:04:09.802-0700	Failed: open /home/gaurav/Automobile_data.csv: no such file or directory
+2021-04-19T00:04:09.802-0700	imported 0 documents
+gaurav@ubuntu:~$ mongoimport --db automobile --collection inventory --file /home/gaurav/Downloads/Automobile_data.csv
+2021-04-19T00:05:36.778-0700	connected to: localhost
+2021-04-19T00:05:36.778-0700	Failed: error processing document #1: invalid character 's' looking for beginning of value
+2021-04-19T00:05:36.778-0700	imported 0 documents
+gaurav@ubuntu:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("cdd2e163-35a8-4abb-8a07-537a23119699") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] 
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] 
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] 
+> show dbs
+admin       0.000GB
+automobile  0.000GB
+config      0.000GB
+local       0.000GB
+> use automobile
+switched to db automobile
+> show collections
+inventory
+> db.inventory.find().pretty()
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b025"),
+	"symboling" : 3,
+	"normalized-losses" : "?",
+	"make" : "alfa-romero",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "convertible",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 88.6,
+	"length" : 168.8,
+	"width" : 64.1,
+	"height" : 48.8,
+	"curb-weight" : 2548,
+	"engine-type" : "dohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 130,
+	"fuel-system" : "mpfi",
+	"bore" : 3.47,
+	"stroke" : 2.68,
+	"compression-ratio" : 9,
+	"horsepower" : 111,
+	"peak-rpm" : 5000,
+	"city-mpg" : 21,
+	"highway-mpg" : 27,
+	"price" : 13495
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b026"),
+	"symboling" : 3,
+	"normalized-losses" : "?",
+	"make" : "alfa-romero",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "convertible",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 88.6,
+	"length" : 168.8,
+	"width" : 64.1,
+	"height" : 48.8,
+	"curb-weight" : 2548,
+	"engine-type" : "dohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 130,
+	"fuel-system" : "mpfi",
+	"bore" : 3.47,
+	"stroke" : 2.68,
+	"compression-ratio" : 9,
+	"horsepower" : 111,
+	"peak-rpm" : 5000,
+	"city-mpg" : 21,
+	"highway-mpg" : 27,
+	"price" : 16500
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b027"),
+	"symboling" : 1,
+	"normalized-losses" : "?",
+	"make" : "alfa-romero",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 94.5,
+	"length" : 171.2,
+	"width" : 65.5,
+	"height" : 52.4,
+	"curb-weight" : 2823,
+	"engine-type" : "ohcv",
+	"num-of-cylinders" : "six",
+	"engine-size" : 152,
+	"fuel-system" : "mpfi",
+	"bore" : 2.68,
+	"stroke" : 3.47,
+	"compression-ratio" : 9,
+	"horsepower" : 154,
+	"peak-rpm" : 5000,
+	"city-mpg" : 19,
+	"highway-mpg" : 26,
+	"price" : 16500
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b028"),
+	"symboling" : 2,
+	"normalized-losses" : 164,
+	"make" : "audi",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 99.8,
+	"length" : 176.6,
+	"width" : 66.2,
+	"height" : 54.3,
+	"curb-weight" : 2337,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 109,
+	"fuel-system" : "mpfi",
+	"bore" : 3.19,
+	"stroke" : 3.4,
+	"compression-ratio" : 10,
+	"horsepower" : 102,
+	"peak-rpm" : 5500,
+	"city-mpg" : 24,
+	"highway-mpg" : 30,
+	"price" : 13950
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b029"),
+	"symboling" : 2,
+	"normalized-losses" : 164,
+	"make" : "audi",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "4wd",
+	"engine-location" : "front",
+	"wheel-base" : 99.4,
+	"length" : 176.6,
+	"width" : 66.4,
+	"height" : 54.3,
+	"curb-weight" : 2824,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "five",
+	"engine-size" : 136,
+	"fuel-system" : "mpfi",
+	"bore" : 3.19,
+	"stroke" : 3.4,
+	"compression-ratio" : 8,
+	"horsepower" : 115,
+	"peak-rpm" : 5500,
+	"city-mpg" : 18,
+	"highway-mpg" : 22,
+	"price" : 17450
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02a"),
+	"symboling" : 2,
+	"normalized-losses" : "?",
+	"make" : "audi",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "sedan",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 99.8,
+	"length" : 177.3,
+	"width" : 66.3,
+	"height" : 53.1,
+	"curb-weight" : 2507,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "five",
+	"engine-size" : 136,
+	"fuel-system" : "mpfi",
+	"bore" : 3.19,
+	"stroke" : 3.4,
+	"compression-ratio" : 8.5,
+	"horsepower" : 110,
+	"peak-rpm" : 5500,
+	"city-mpg" : 19,
+	"highway-mpg" : 25,
+	"price" : 15250
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02b"),
+	"symboling" : 1,
+	"normalized-losses" : 158,
+	"make" : "audi",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 105.8,
+	"length" : 192.7,
+	"width" : 71.4,
+	"height" : 55.7,
+	"curb-weight" : 2844,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "five",
+	"engine-size" : 136,
+	"fuel-system" : "mpfi",
+	"bore" : 3.19,
+	"stroke" : 3.4,
+	"compression-ratio" : 8.5,
+	"horsepower" : 110,
+	"peak-rpm" : 5500,
+	"city-mpg" : 19,
+	"highway-mpg" : 25,
+	"price" : 17710
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02c"),
+	"symboling" : 2,
+	"normalized-losses" : 192,
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 101.2,
+	"length" : 176.8,
+	"width" : 64.8,
+	"height" : 54.3,
+	"curb-weight" : 2395,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 108,
+	"fuel-system" : "mpfi",
+	"bore" : 3.5,
+	"stroke" : 2.8,
+	"compression-ratio" : 8.8,
+	"horsepower" : 101,
+	"peak-rpm" : 5800,
+	"city-mpg" : 23,
+	"highway-mpg" : 29,
+	"price" : 16430
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02d"),
+	"symboling" : 0,
+	"normalized-losses" : 192,
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 101.2,
+	"length" : 176.8,
+	"width" : 64.8,
+	"height" : 54.3,
+	"curb-weight" : 2395,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 108,
+	"fuel-system" : "mpfi",
+	"bore" : 3.5,
+	"stroke" : 2.8,
+	"compression-ratio" : 8.8,
+	"horsepower" : 101,
+	"peak-rpm" : 5800,
+	"city-mpg" : 23,
+	"highway-mpg" : 29,
+	"price" : 16925
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02e"),
+	"symboling" : 0,
+	"normalized-losses" : 188,
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 101.2,
+	"length" : 176.8,
+	"width" : 64.8,
+	"height" : 54.3,
+	"curb-weight" : 2710,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 164,
+	"fuel-system" : "mpfi",
+	"bore" : 3.31,
+	"stroke" : 3.19,
+	"compression-ratio" : 9,
+	"horsepower" : 121,
+	"peak-rpm" : 4250,
+	"city-mpg" : 21,
+	"highway-mpg" : 28,
+	"price" : 20970
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02f"),
+	"symboling" : 0,
+	"normalized-losses" : 188,
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 101.2,
+	"length" : 176.8,
+	"width" : 64.8,
+	"height" : 54.3,
+	"curb-weight" : 2765,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 164,
+	"fuel-system" : "mpfi",
+	"bore" : 3.31,
+	"stroke" : 3.19,
+	"compression-ratio" : 9,
+	"horsepower" : 121,
+	"peak-rpm" : 4250,
+	"city-mpg" : 21,
+	"highway-mpg" : 28,
+	"price" : 21105
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b030"),
+	"symboling" : 1,
+	"normalized-losses" : "?",
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 103.5,
+	"length" : 189,
+	"width" : 66.9,
+	"height" : 55.7,
+	"curb-weight" : 3055,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 164,
+	"fuel-system" : "mpfi",
+	"bore" : 3.31,
+	"stroke" : 3.19,
+	"compression-ratio" : 9,
+	"horsepower" : 121,
+	"peak-rpm" : 4250,
+	"city-mpg" : 20,
+	"highway-mpg" : 25,
+	"price" : 24565
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b031"),
+	"symboling" : 0,
+	"normalized-losses" : "?",
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 103.5,
+	"length" : 189,
+	"width" : 66.9,
+	"height" : 55.7,
+	"curb-weight" : 3230,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 209,
+	"fuel-system" : "mpfi",
+	"bore" : 3.62,
+	"stroke" : 3.39,
+	"compression-ratio" : 8,
+	"horsepower" : 182,
+	"peak-rpm" : 5400,
+	"city-mpg" : 16,
+	"highway-mpg" : 22,
+	"price" : 30760
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b032"),
+	"symboling" : 0,
+	"normalized-losses" : "?",
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 103.5,
+	"length" : 193.8,
+	"width" : 67.9,
+	"height" : 53.7,
+	"curb-weight" : 3380,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 209,
+	"fuel-system" : "mpfi",
+	"bore" : 3.62,
+	"stroke" : 3.39,
+	"compression-ratio" : 8,
+	"horsepower" : 182,
+	"peak-rpm" : 5400,
+	"city-mpg" : 16,
+	"highway-mpg" : 22,
+	"price" : 41315
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b033"),
+	"symboling" : 0,
+	"normalized-losses" : "?",
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 110,
+	"length" : 197,
+	"width" : 70.9,
+	"height" : 56.3,
+	"curb-weight" : 3505,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 209,
+	"fuel-system" : "mpfi",
+	"bore" : 3.62,
+	"stroke" : 3.39,
+	"compression-ratio" : 8,
+	"horsepower" : 182,
+	"peak-rpm" : 5400,
+	"city-mpg" : 15,
+	"highway-mpg" : 20,
+	"price" : 36880
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b034"),
+	"symboling" : 2,
+	"normalized-losses" : 121,
+	"make" : "chevrolet",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 88.4,
+	"length" : 141.1,
+	"width" : 60.3,
+	"height" : 53.2,
+	"curb-weight" : 1488,
+	"engine-type" : "l",
+	"num-of-cylinders" : "three",
+	"engine-size" : 61,
+	"fuel-system" : "2bbl",
+	"bore" : 2.91,
+	"stroke" : 3.03,
+	"compression-ratio" : 9.5,
+	"horsepower" : 48,
+	"peak-rpm" : 5100,
+	"city-mpg" : 47,
+	"highway-mpg" : 53,
+	"price" : 5151
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b035"),
+	"symboling" : 1,
+	"normalized-losses" : 98,
+	"make" : "chevrolet",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 94.5,
+	"length" : 155.9,
+	"width" : 63.6,
+	"height" : 52,
+	"curb-weight" : 1874,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 90,
+	"fuel-system" : "2bbl",
+	"bore" : 3.03,
+	"stroke" : 3.11,
+	"compression-ratio" : 9.6,
+	"horsepower" : 70,
+	"peak-rpm" : 5400,
+	"city-mpg" : 38,
+	"highway-mpg" : 43,
+	"price" : 6295
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b036"),
+	"symboling" : 0,
+	"normalized-losses" : 81,
+	"make" : "chevrolet",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 94.5,
+	"length" : 158.8,
+	"width" : 63.6,
+	"height" : 52,
+	"curb-weight" : 1909,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 90,
+	"fuel-system" : "2bbl",
+	"bore" : 3.03,
+	"stroke" : 3.11,
+	"compression-ratio" : 9.6,
+	"horsepower" : 70,
+	"peak-rpm" : 5400,
+	"city-mpg" : 38,
+	"highway-mpg" : 43,
+	"price" : 6575
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b037"),
+	"symboling" : 1,
+	"normalized-losses" : 118,
+	"make" : "dodge",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 93.7,
+	"length" : 157.3,
+	"width" : 63.8,
+	"height" : 50.8,
+	"curb-weight" : 1876,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 90,
+	"fuel-system" : "2bbl",
+	"bore" : 2.97,
+	"stroke" : 3.23,
+	"compression-ratio" : 9.41,
+	"horsepower" : 68,
+	"peak-rpm" : 5500,
+	"city-mpg" : 37,
+	"highway-mpg" : 41,
+	"price" : 5572
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b038"),
+	"symboling" : 1,
+	"normalized-losses" : 118,
+	"make" : "dodge",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 93.7,
+	"length" : 157.3,
+	"width" : 63.8,
+	"height" : 50.8,
+	"curb-weight" : 1876,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 90,
+	"fuel-system" : "2bbl",
+	"bore" : 2.97,
+	"stroke" : 3.23,
+	"compression-ratio" : 9.4,
+	"horsepower" : 68,
+	"peak-rpm" : 5500,
+	"city-mpg" : 31,
+	"highway-mpg" : 38,
+	"price" : 6377
+}
+Type "it" for more
+> exit
+bye
+gaurav@ubuntu:~$ mongoexport --db automobile -c inventory --out /home/gaurav/Downloads/gaurav_data.csv
+2021-04-19T00:09:49.243-0700	connected to: localhost
+2021-04-19T00:09:49.261-0700	exported 205 records
+gaurav@ubuntu:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("c2f07b02-70b8-472a-9245-68ce3a553dcc") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] 
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-18T22:34:38.104-0700 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] 
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-18T22:34:41.316-0700 I CONTROL  [initandlisten] 
+> show dbs
+admin       0.000GB
+automobile  0.000GB
+config      0.000GB
+local       0.000GB
+> use automobile
+switched to db automobile
+> show collections
+inventory
+> db.inventory.find
+function (query, fields, limit, skip, batchSize, options) {
+    var cursor = new DBQuery(this._mongo,
+                             this._db,
+                             this,
+                             this._fullName,
+                             this._massageObject(query),
+                             fields,
+                             limit,
+                             skip,
+                             batchSize,
+                             options || this.getQueryOptions());
+
+    {
+        const session = this.getDB().getSession();
+
+        const readPreference = session._serverSession.client.getReadPreference(session);
+        if (readPreference !== null) {
+            cursor.readPref(readPreference.mode, readPreference.tags);
+        }
+
+        const readConcern = session._serverSession.client.getReadConcern(session);
+        if (readConcern !== null) {
+            cursor.readConcern(readConcern.level);
+        }
+    }
+
+    return cursor;
+}
+> db.inventory.find{"make":{$exists:true}})
+2021-04-19T00:14:26.659-0700 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:17
+> db.inventory.find({"make":{$exists:true}})
+{ "_id" : ObjectId("607d29c58c1df32d39e4b025"), "symboling" : 3, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "convertible", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 88.6, "length" : 168.8, "width" : 64.1, "height" : 48.8, "curb-weight" : 2548, "engine-type" : "dohc", "num-of-cylinders" : "four", "engine-size" : 130, "fuel-system" : "mpfi", "bore" : 3.47, "stroke" : 2.68, "compression-ratio" : 9, "horsepower" : 111, "peak-rpm" : 5000, "city-mpg" : 21, "highway-mpg" : 27, "price" : 13495 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b026"), "symboling" : 3, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "convertible", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 88.6, "length" : 168.8, "width" : 64.1, "height" : 48.8, "curb-weight" : 2548, "engine-type" : "dohc", "num-of-cylinders" : "four", "engine-size" : 130, "fuel-system" : "mpfi", "bore" : 3.47, "stroke" : 2.68, "compression-ratio" : 9, "horsepower" : 111, "peak-rpm" : 5000, "city-mpg" : 21, "highway-mpg" : 27, "price" : 16500 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b027"), "symboling" : 1, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 171.2, "width" : 65.5, "height" : 52.4, "curb-weight" : 2823, "engine-type" : "ohcv", "num-of-cylinders" : "six", "engine-size" : 152, "fuel-system" : "mpfi", "bore" : 2.68, "stroke" : 3.47, "compression-ratio" : 9, "horsepower" : 154, "peak-rpm" : 5000, "city-mpg" : 19, "highway-mpg" : 26, "price" : 16500 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b028"), "symboling" : 2, "normalized-losses" : 164, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.8, "length" : 176.6, "width" : 66.2, "height" : 54.3, "curb-weight" : 2337, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 109, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 10, "horsepower" : 102, "peak-rpm" : 5500, "city-mpg" : 24, "highway-mpg" : 30, "price" : 13950 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b029"), "symboling" : 2, "normalized-losses" : 164, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "4wd", "engine-location" : "front", "wheel-base" : 99.4, "length" : 176.6, "width" : 66.4, "height" : 54.3, "curb-weight" : 2824, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8, "horsepower" : 115, "peak-rpm" : 5500, "city-mpg" : 18, "highway-mpg" : 22, "price" : 17450 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02a"), "symboling" : 2, "normalized-losses" : "?", "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.8, "length" : 177.3, "width" : 66.3, "height" : 53.1, "curb-weight" : 2507, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 15250 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02b"), "symboling" : 1, "normalized-losses" : 158, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 105.8, "length" : 192.7, "width" : 71.4, "height" : 55.7, "curb-weight" : 2844, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 17710 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02c"), "symboling" : 2, "normalized-losses" : 192, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2395, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 108, "fuel-system" : "mpfi", "bore" : 3.5, "stroke" : 2.8, "compression-ratio" : 8.8, "horsepower" : 101, "peak-rpm" : 5800, "city-mpg" : 23, "highway-mpg" : 29, "price" : 16430 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02d"), "symboling" : 0, "normalized-losses" : 192, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2395, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 108, "fuel-system" : "mpfi", "bore" : 3.5, "stroke" : 2.8, "compression-ratio" : 8.8, "horsepower" : 101, "peak-rpm" : 5800, "city-mpg" : 23, "highway-mpg" : 29, "price" : 16925 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02e"), "symboling" : 0, "normalized-losses" : 188, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2710, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 20970 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02f"), "symboling" : 0, "normalized-losses" : 188, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2765, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 21105 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b030"), "symboling" : 1, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 189, "width" : 66.9, "height" : 55.7, "curb-weight" : 3055, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 20, "highway-mpg" : 25, "price" : 24565 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b031"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 189, "width" : 66.9, "height" : 55.7, "curb-weight" : 3230, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 16, "highway-mpg" : 22, "price" : 30760 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b032"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 193.8, "width" : 67.9, "height" : 53.7, "curb-weight" : 3380, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 16, "highway-mpg" : 22, "price" : 41315 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b033"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 110, "length" : 197, "width" : 70.9, "height" : 56.3, "curb-weight" : 3505, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 15, "highway-mpg" : 20, "price" : 36880 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b034"), "symboling" : 2, "normalized-losses" : 121, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 88.4, "length" : 141.1, "width" : 60.3, "height" : 53.2, "curb-weight" : 1488, "engine-type" : "l", "num-of-cylinders" : "three", "engine-size" : 61, "fuel-system" : "2bbl", "bore" : 2.91, "stroke" : 3.03, "compression-ratio" : 9.5, "horsepower" : 48, "peak-rpm" : 5100, "city-mpg" : 47, "highway-mpg" : 53, "price" : 5151 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b035"), "symboling" : 1, "normalized-losses" : 98, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 155.9, "width" : 63.6, "height" : 52, "curb-weight" : 1874, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 90, "fuel-system" : "2bbl", "bore" : 3.03, "stroke" : 3.11, "compression-ratio" : 9.6, "horsepower" : 70, "peak-rpm" : 5400, "city-mpg" : 38, "highway-mpg" : 43, "price" : 6295 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b036"), "symboling" : 0, "normalized-losses" : 81, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 158.8, "width" : 63.6, "height" : 52, "curb-weight" : 1909, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 90, "fuel-system" : "2bbl", "bore" : 3.03, "stroke" : 3.11, "compression-ratio" : 9.6, "horsepower" : 70, "peak-rpm" : 5400, "city-mpg" : 38, "highway-mpg" : 43, "price" : 6575 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b037"), "symboling" : 1, "normalized-losses" : 118, "make" : "dodge", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 93.7, "length" : 157.3, "width" : 63.8, "height" : 50.8, "curb-weight" : 1876, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 90, "fuel-system" : "2bbl", "bore" : 2.97, "stroke" : 3.23, "compression-ratio" : 9.41, "horsepower" : 68, "peak-rpm" : 5500, "city-mpg" : 37, "highway-mpg" : 41, "price" : 5572 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b038"), "symboling" : 1, "normalized-losses" : 118, "make" : "dodge", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 93.7, "length" : 157.3, "width" : 63.8, "height" : 50.8, "curb-weight" : 1876, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 90, "fuel-system" : "2bbl", "bore" : 2.97, "stroke" : 3.23, "compression-ratio" : 9.4, "horsepower" : 68, "peak-rpm" : 5500, "city-mpg" : 31, "highway-mpg" : 38, "price" : 6377 }
+Type "it" for more
+> db.names.find({"height:{$type:1}})
+2021-04-19T00:23:22.365-0700 E QUERY    [thread1] SyntaxError: unterminated string literal @(shell):1:15
+> db.names.find({"height:{$type:2}})
+2021-04-19T00:24:35.827-0700 E QUERY    [thread1] SyntaxError: unterminated string literal @(shell):1:15
+> db.names.find({"bore":{$regex:"e"}})
+> > db.inventory.find().pretty()
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b025"),
+	"symboling" : 3,
+	"normalized-losses" : "?",
+	"make" : "alfa-romero",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "convertible",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 88.6,
+	"length" : 168.8,
+	"width" : 64.1,
+	"height" : 48.8,
+	"curb-weight" : 2548,
+	"engine-type" : "dohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 130,
+	"fuel-system" : "mpfi",
+	"bore" : 3.47,
+	"stroke" : 2.68,
+	"compression-ratio" : 9,
+	"horsepower" : 111,
+	"peak-rpm" : 5000,
+	"city-mpg" : 21,
+	"highway-mpg" : 27,
+	"price" : 13495
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b026"),
+	"symboling" : 3,
+	"normalized-losses" : "?",
+	"make" : "alfa-romero",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "convertible",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 88.6,
+	"length" : 168.8,
+	"width" : 64.1,
+	"height" : 48.8,
+	"curb-weight" : 2548,
+	"engine-type" : "dohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 130,
+	"fuel-system" : "mpfi",
+	"bore" : 3.47,
+	"stroke" : 2.68,
+	"compression-ratio" : 9,
+	"horsepower" : 111,
+	"peak-rpm" : 5000,
+	"city-mpg" : 21,
+	"highway-mpg" : 27,
+	"price" : 16500
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b027"),
+	"symboling" : 1,
+	"normalized-losses" : "?",
+	"make" : "alfa-romero",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 94.5,
+	"length" : 171.2,
+	"width" : 65.5,
+	"height" : 52.4,
+	"curb-weight" : 2823,
+	"engine-type" : "ohcv",
+	"num-of-cylinders" : "six",
+	"engine-size" : 152,
+	"fuel-system" : "mpfi",
+	"bore" : 2.68,
+	"stroke" : 3.47,
+	"compression-ratio" : 9,
+	"horsepower" : 154,
+	"peak-rpm" : 5000,
+	"city-mpg" : 19,
+	"highway-mpg" : 26,
+	"price" : 16500
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b028"),
+	"symboling" : 2,
+	"normalized-losses" : 164,
+	"make" : "audi",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 99.8,
+	"length" : 176.6,
+	"width" : 66.2,
+	"height" : 54.3,
+	"curb-weight" : 2337,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 109,
+	"fuel-system" : "mpfi",
+	"bore" : 3.19,
+	"stroke" : 3.4,
+	"compression-ratio" : 10,
+	"horsepower" : 102,
+	"peak-rpm" : 5500,
+	"city-mpg" : 24,
+	"highway-mpg" : 30,
+	"price" : 13950
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b029"),
+	"symboling" : 2,
+	"normalized-losses" : 164,
+	"make" : "audi",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "4wd",
+	"engine-location" : "front",
+	"wheel-base" : 99.4,
+	"length" : 176.6,
+	"width" : 66.4,
+	"height" : 54.3,
+	"curb-weight" : 2824,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "five",
+	"engine-size" : 136,
+	"fuel-system" : "mpfi",
+	"bore" : 3.19,
+	"stroke" : 3.4,
+	"compression-ratio" : 8,
+	"horsepower" : 115,
+	"peak-rpm" : 5500,
+	"city-mpg" : 18,
+	"highway-mpg" : 22,
+	"price" : 17450
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02a"),
+	"symboling" : 2,
+	"normalized-losses" : "?",
+	"make" : "audi",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "sedan",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 99.8,
+	"length" : 177.3,
+	"width" : 66.3,
+	"height" : 53.1,
+	"curb-weight" : 2507,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "five",
+	"engine-size" : 136,
+	"fuel-system" : "mpfi",
+	"bore" : 3.19,
+	"stroke" : 3.4,
+	"compression-ratio" : 8.5,
+	"horsepower" : 110,
+	"peak-rpm" : 5500,
+	"city-mpg" : 19,
+	"highway-mpg" : 25,
+	"price" : 15250
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02b"),
+	"symboling" : 1,
+	"normalized-losses" : 158,
+	"make" : "audi",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 105.8,
+	"length" : 192.7,
+	"width" : 71.4,
+	"height" : 55.7,
+	"curb-weight" : 2844,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "five",
+	"engine-size" : 136,
+	"fuel-system" : "mpfi",
+	"bore" : 3.19,
+	"stroke" : 3.4,
+	"compression-ratio" : 8.5,
+	"horsepower" : 110,
+	"peak-rpm" : 5500,
+	"city-mpg" : 19,
+	"highway-mpg" : 25,
+	"price" : 17710
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02c"),
+	"symboling" : 2,
+	"normalized-losses" : 192,
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 101.2,
+	"length" : 176.8,
+	"width" : 64.8,
+	"height" : 54.3,
+	"curb-weight" : 2395,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 108,
+	"fuel-system" : "mpfi",
+	"bore" : 3.5,
+	"stroke" : 2.8,
+	"compression-ratio" : 8.8,
+	"horsepower" : 101,
+	"peak-rpm" : 5800,
+	"city-mpg" : 23,
+	"highway-mpg" : 29,
+	"price" : 16430
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02d"),
+	"symboling" : 0,
+	"normalized-losses" : 192,
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 101.2,
+	"length" : 176.8,
+	"width" : 64.8,
+	"height" : 54.3,
+	"curb-weight" : 2395,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 108,
+	"fuel-system" : "mpfi",
+	"bore" : 3.5,
+	"stroke" : 2.8,
+	"compression-ratio" : 8.8,
+	"horsepower" : 101,
+	"peak-rpm" : 5800,
+	"city-mpg" : 23,
+	"highway-mpg" : 29,
+	"price" : 16925
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02e"),
+	"symboling" : 0,
+	"normalized-losses" : 188,
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 101.2,
+	"length" : 176.8,
+	"width" : 64.8,
+	"height" : 54.3,
+	"curb-weight" : 2710,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 164,
+	"fuel-system" : "mpfi",
+	"bore" : 3.31,
+	"stroke" : 3.19,
+	"compression-ratio" : 9,
+	"horsepower" : 121,
+	"peak-rpm" : 4250,
+	"city-mpg" : 21,
+	"highway-mpg" : 28,
+	"price" : 20970
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b02f"),
+	"symboling" : 0,
+	"normalized-losses" : 188,
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 101.2,
+	"length" : 176.8,
+	"width" : 64.8,
+	"height" : 54.3,
+	"curb-weight" : 2765,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 164,
+	"fuel-system" : "mpfi",
+	"bore" : 3.31,
+	"stroke" : 3.19,
+	"compression-ratio" : 9,
+	"horsepower" : 121,
+	"peak-rpm" : 4250,
+	"city-mpg" : 21,
+	"highway-mpg" : 28,
+	"price" : 21105
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b030"),
+	"symboling" : 1,
+	"normalized-losses" : "?",
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 103.5,
+	"length" : 189,
+	"width" : 66.9,
+	"height" : 55.7,
+	"curb-weight" : 3055,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 164,
+	"fuel-system" : "mpfi",
+	"bore" : 3.31,
+	"stroke" : 3.19,
+	"compression-ratio" : 9,
+	"horsepower" : 121,
+	"peak-rpm" : 4250,
+	"city-mpg" : 20,
+	"highway-mpg" : 25,
+	"price" : 24565
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b031"),
+	"symboling" : 0,
+	"normalized-losses" : "?",
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 103.5,
+	"length" : 189,
+	"width" : 66.9,
+	"height" : 55.7,
+	"curb-weight" : 3230,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 209,
+	"fuel-system" : "mpfi",
+	"bore" : 3.62,
+	"stroke" : 3.39,
+	"compression-ratio" : 8,
+	"horsepower" : 182,
+	"peak-rpm" : 5400,
+	"city-mpg" : 16,
+	"highway-mpg" : 22,
+	"price" : 30760
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b032"),
+	"symboling" : 0,
+	"normalized-losses" : "?",
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 103.5,
+	"length" : 193.8,
+	"width" : 67.9,
+	"height" : 53.7,
+	"curb-weight" : 3380,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 209,
+	"fuel-system" : "mpfi",
+	"bore" : 3.62,
+	"stroke" : 3.39,
+	"compression-ratio" : 8,
+	"horsepower" : 182,
+	"peak-rpm" : 5400,
+	"city-mpg" : 16,
+	"highway-mpg" : 22,
+	"price" : 41315
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b033"),
+	"symboling" : 0,
+	"normalized-losses" : "?",
+	"make" : "bmw",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "rwd",
+	"engine-location" : "front",
+	"wheel-base" : 110,
+	"length" : 197,
+	"width" : 70.9,
+	"height" : 56.3,
+	"curb-weight" : 3505,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "six",
+	"engine-size" : 209,
+	"fuel-system" : "mpfi",
+	"bore" : 3.62,
+	"stroke" : 3.39,
+	"compression-ratio" : 8,
+	"horsepower" : 182,
+	"peak-rpm" : 5400,
+	"city-mpg" : 15,
+	"highway-mpg" : 20,
+	"price" : 36880
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b034"),
+	"symboling" : 2,
+	"normalized-losses" : 121,
+	"make" : "chevrolet",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 88.4,
+	"length" : 141.1,
+	"width" : 60.3,
+	"height" : 53.2,
+	"curb-weight" : 1488,
+	"engine-type" : "l",
+	"num-of-cylinders" : "three",
+	"engine-size" : 61,
+	"fuel-system" : "2bbl",
+	"bore" : 2.91,
+	"stroke" : 3.03,
+	"compression-ratio" : 9.5,
+	"horsepower" : 48,
+	"peak-rpm" : 5100,
+	"city-mpg" : 47,
+	"highway-mpg" : 53,
+	"price" : 5151
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b035"),
+	"symboling" : 1,
+	"normalized-losses" : 98,
+	"make" : "chevrolet",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 94.5,
+	"length" : 155.9,
+	"width" : 63.6,
+	"height" : 52,
+	"curb-weight" : 1874,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 90,
+	"fuel-system" : "2bbl",
+	"bore" : 3.03,
+	"stroke" : 3.11,
+	"compression-ratio" : 9.6,
+	"horsepower" : 70,
+	"peak-rpm" : 5400,
+	"city-mpg" : 38,
+	"highway-mpg" : 43,
+	"price" : 6295
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b036"),
+	"symboling" : 0,
+	"normalized-losses" : 81,
+	"make" : "chevrolet",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "four",
+	"body-style" : "sedan",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 94.5,
+	"length" : 158.8,
+	"width" : 63.6,
+	"height" : 52,
+	"curb-weight" : 1909,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 90,
+	"fuel-system" : "2bbl",
+	"bore" : 3.03,
+	"stroke" : 3.11,
+	"compression-ratio" : 9.6,
+	"horsepower" : 70,
+	"peak-rpm" : 5400,
+	"city-mpg" : 38,
+	"highway-mpg" : 43,
+	"price" : 6575
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b037"),
+	"symboling" : 1,
+	"normalized-losses" : 118,
+	"make" : "dodge",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 93.7,
+	"length" : 157.3,
+	"width" : 63.8,
+	"height" : 50.8,
+	"curb-weight" : 1876,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 90,
+	"fuel-system" : "2bbl",
+	"bore" : 2.97,
+	"stroke" : 3.23,
+	"compression-ratio" : 9.41,
+	"horsepower" : 68,
+	"peak-rpm" : 5500,
+	"city-mpg" : 37,
+	"highway-mpg" : 41,
+	"price" : 5572
+}
+{
+	"_id" : ObjectId("607d29c58c1df32d39e4b038"),
+	"symboling" : 1,
+	"normalized-losses" : 118,
+	"make" : "dodge",
+	"fuel-type" : "gas",
+	"aspiration" : "std",
+	"num-of-doors" : "two",
+	"body-style" : "hatchback",
+	"drive-wheels" : "fwd",
+	"engine-location" : "front",
+	"wheel-base" : 93.7,
+	"length" : 157.3,
+	"width" : 63.8,
+	"height" : 50.8,
+	"curb-weight" : 1876,
+	"engine-type" : "ohc",
+	"num-of-cylinders" : "four",
+	"engine-size" : 90,
+	"fuel-system" : "2bbl",
+	"bore" : 2.97,
+	"stroke" : 3.23,
+	"compression-ratio" : 9.4,
+	"horsepower" : 68,
+	"peak-rpm" : 5500,
+	"city-mpg" : 31,
+	"highway-mpg" : 38,
+	"price" : 6377
+}
+Type "it" for more
+> db.inventory.update({"engine-size":90},{$set:{"engine-size":95}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.inventory.find()
+{ "_id" : ObjectId("607d29c58c1df32d39e4b025"), "symboling" : 3, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "convertible", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 88.6, "length" : 168.8, "width" : 64.1, "height" : 48.8, "curb-weight" : 2548, "engine-type" : "dohc", "num-of-cylinders" : "four", "engine-size" : 130, "fuel-system" : "mpfi", "bore" : 3.47, "stroke" : 2.68, "compression-ratio" : 9, "horsepower" : 111, "peak-rpm" : 5000, "city-mpg" : 21, "highway-mpg" : 27, "price" : 13495 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b026"), "symboling" : 3, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "convertible", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 88.6, "length" : 168.8, "width" : 64.1, "height" : 48.8, "curb-weight" : 2548, "engine-type" : "dohc", "num-of-cylinders" : "four", "engine-size" : 130, "fuel-system" : "mpfi", "bore" : 3.47, "stroke" : 2.68, "compression-ratio" : 9, "horsepower" : 111, "peak-rpm" : 5000, "city-mpg" : 21, "highway-mpg" : 27, "price" : 16500 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b027"), "symboling" : 1, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 171.2, "width" : 65.5, "height" : 52.4, "curb-weight" : 2823, "engine-type" : "ohcv", "num-of-cylinders" : "six", "engine-size" : 152, "fuel-system" : "mpfi", "bore" : 2.68, "stroke" : 3.47, "compression-ratio" : 9, "horsepower" : 154, "peak-rpm" : 5000, "city-mpg" : 19, "highway-mpg" : 26, "price" : 16500 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b028"), "symboling" : 2, "normalized-losses" : 164, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.8, "length" : 176.6, "width" : 66.2, "height" : 54.3, "curb-weight" : 2337, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 109, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 10, "horsepower" : 102, "peak-rpm" : 5500, "city-mpg" : 24, "highway-mpg" : 30, "price" : 13950 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b029"), "symboling" : 2, "normalized-losses" : 164, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "4wd", "engine-location" : "front", "wheel-base" : 99.4, "length" : 176.6, "width" : 66.4, "height" : 54.3, "curb-weight" : 2824, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8, "horsepower" : 115, "peak-rpm" : 5500, "city-mpg" : 18, "highway-mpg" : 22, "price" : 17450 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02a"), "symboling" : 2, "normalized-losses" : "?", "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.8, "length" : 177.3, "width" : 66.3, "height" : 53.1, "curb-weight" : 2507, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 15250 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02b"), "symboling" : 1, "normalized-losses" : 158, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 105.8, "length" : 192.7, "width" : 71.4, "height" : 55.7, "curb-weight" : 2844, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 17710 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02c"), "symboling" : 2, "normalized-losses" : 192, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2395, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 108, "fuel-system" : "mpfi", "bore" : 3.5, "stroke" : 2.8, "compression-ratio" : 8.8, "horsepower" : 101, "peak-rpm" : 5800, "city-mpg" : 23, "highway-mpg" : 29, "price" : 16430 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02d"), "symboling" : 0, "normalized-losses" : 192, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2395, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 108, "fuel-system" : "mpfi", "bore" : 3.5, "stroke" : 2.8, "compression-ratio" : 8.8, "horsepower" : 101, "peak-rpm" : 5800, "city-mpg" : 23, "highway-mpg" : 29, "price" : 16925 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02e"), "symboling" : 0, "normalized-losses" : 188, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2710, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 20970 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02f"), "symboling" : 0, "normalized-losses" : 188, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2765, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 21105 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b030"), "symboling" : 1, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 189, "width" : 66.9, "height" : 55.7, "curb-weight" : 3055, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 20, "highway-mpg" : 25, "price" : 24565 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b031"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 189, "width" : 66.9, "height" : 55.7, "curb-weight" : 3230, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 16, "highway-mpg" : 22, "price" : 30760 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b032"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 193.8, "width" : 67.9, "height" : 53.7, "curb-weight" : 3380, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 16, "highway-mpg" : 22, "price" : 41315 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b033"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 110, "length" : 197, "width" : 70.9, "height" : 56.3, "curb-weight" : 3505, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 15, "highway-mpg" : 20, "price" : 36880 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b034"), "symboling" : 2, "normalized-losses" : 121, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 88.4, "length" : 141.1, "width" : 60.3, "height" : 53.2, "curb-weight" : 1488, "engine-type" : "l", "num-of-cylinders" : "three", "engine-size" : 61, "fuel-system" : "2bbl", "bore" : 2.91, "stroke" : 3.03, "compression-ratio" : 9.5, "horsepower" : 48, "peak-rpm" : 5100, "city-mpg" : 47, "highway-mpg" : 53, "price" : 5151 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b035"), "symboling" : 1, "normalized-losses" : 98, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 155.9, "width" : 63.6, "height" : 52, "curb-weight" : 1874, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 95, "fuel-system" : "2bbl", "bore" : 3.03, "stroke" : 3.11, "compression-ratio" : 9.6, "horsepower" : 70, "peak-rpm" : 5400, "city-mpg" : 38, "highway-mpg" : 43, "price" : 6295 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b036"), "symboling" : 0, "normalized-losses" : 81, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 158.8, "width" : 63.6, "height" : 52, "curb-weight" : 1909, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 90, "fuel-system" : "2bbl", "bore" : 3.03, "stroke" : 3.11, "compression-ratio" : 9.6, "horsepower" : 70, "peak-rpm" : 5400, "city-mpg" : 38, "highway-mpg" : 43, "price" : 6575 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b037"), "symboling" : 1, "normalized-losses" : 118, "make" : "dodge", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 93.7, "length" : 157.3, "width" : 63.8, "height" : 50.8, "curb-weight" : 1876, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 90, "fuel-system" : "2bbl", "bore" : 2.97, "stroke" : 3.23, "compression-ratio" : 9.41, "horsepower" : 68, "peak-rpm" : 5500, "city-mpg" : 37, "highway-mpg" : 41, "price" : 5572 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b038"), "symboling" : 1, "normalized-losses" : 118, "make" : "dodge", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 93.7, "length" : 157.3, "width" : 63.8, "height" : 50.8, "curb-weight" : 1876, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 90, "fuel-system" : "2bbl", "bore" : 2.97, "stroke" : 3.23, "compression-ratio" : 9.4, "horsepower" : 68, "peak-rpm" : 5500, "city-mpg" : 31, "highway-mpg" : 38, "price" : 6377 }
+Type "it" for more
+> db.inventory.find{}
+2021-04-24T08:18:13.285-0700 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:17
+> db.inventory.remove({"width":63.8})
+WriteResult({ "nRemoved" : 24 })
+> db.inventory.find{}
+2021-04-24T08:19:27.950-0700 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:17
+> db.inventory.find()
+{ "_id" : ObjectId("607d29c58c1df32d39e4b025"), "symboling" : 3, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "convertible", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 88.6, "length" : 168.8, "width" : 64.1, "height" : 48.8, "curb-weight" : 2548, "engine-type" : "dohc", "num-of-cylinders" : "four", "engine-size" : 130, "fuel-system" : "mpfi", "bore" : 3.47, "stroke" : 2.68, "compression-ratio" : 9, "horsepower" : 111, "peak-rpm" : 5000, "city-mpg" : 21, "highway-mpg" : 27, "price" : 13495 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b026"), "symboling" : 3, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "convertible", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 88.6, "length" : 168.8, "width" : 64.1, "height" : 48.8, "curb-weight" : 2548, "engine-type" : "dohc", "num-of-cylinders" : "four", "engine-size" : 130, "fuel-system" : "mpfi", "bore" : 3.47, "stroke" : 2.68, "compression-ratio" : 9, "horsepower" : 111, "peak-rpm" : 5000, "city-mpg" : 21, "highway-mpg" : 27, "price" : 16500 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b027"), "symboling" : 1, "normalized-losses" : "?", "make" : "alfa-romero", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 171.2, "width" : 65.5, "height" : 52.4, "curb-weight" : 2823, "engine-type" : "ohcv", "num-of-cylinders" : "six", "engine-size" : 152, "fuel-system" : "mpfi", "bore" : 2.68, "stroke" : 3.47, "compression-ratio" : 9, "horsepower" : 154, "peak-rpm" : 5000, "city-mpg" : 19, "highway-mpg" : 26, "price" : 16500 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b028"), "symboling" : 2, "normalized-losses" : 164, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.8, "length" : 176.6, "width" : 66.2, "height" : 54.3, "curb-weight" : 2337, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 109, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 10, "horsepower" : 102, "peak-rpm" : 5500, "city-mpg" : 24, "highway-mpg" : 30, "price" : 13950 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b029"), "symboling" : 2, "normalized-losses" : 164, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "4wd", "engine-location" : "front", "wheel-base" : 99.4, "length" : 176.6, "width" : 66.4, "height" : 54.3, "curb-weight" : 2824, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8, "horsepower" : 115, "peak-rpm" : 5500, "city-mpg" : 18, "highway-mpg" : 22, "price" : 17450 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02a"), "symboling" : 2, "normalized-losses" : "?", "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.8, "length" : 177.3, "width" : 66.3, "height" : 53.1, "curb-weight" : 2507, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 15250 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02b"), "symboling" : 1, "normalized-losses" : 158, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 105.8, "length" : 192.7, "width" : 71.4, "height" : 55.7, "curb-weight" : 2844, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 17710 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02c"), "symboling" : 2, "normalized-losses" : 192, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2395, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 108, "fuel-system" : "mpfi", "bore" : 3.5, "stroke" : 2.8, "compression-ratio" : 8.8, "horsepower" : 101, "peak-rpm" : 5800, "city-mpg" : 23, "highway-mpg" : 29, "price" : 16430 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02d"), "symboling" : 0, "normalized-losses" : 192, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2395, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 108, "fuel-system" : "mpfi", "bore" : 3.5, "stroke" : 2.8, "compression-ratio" : 8.8, "horsepower" : 101, "peak-rpm" : 5800, "city-mpg" : 23, "highway-mpg" : 29, "price" : 16925 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02e"), "symboling" : 0, "normalized-losses" : 188, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2710, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 20970 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02f"), "symboling" : 0, "normalized-losses" : 188, "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 101.2, "length" : 176.8, "width" : 64.8, "height" : 54.3, "curb-weight" : 2765, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 21105 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b030"), "symboling" : 1, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 189, "width" : 66.9, "height" : 55.7, "curb-weight" : 3055, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 164, "fuel-system" : "mpfi", "bore" : 3.31, "stroke" : 3.19, "compression-ratio" : 9, "horsepower" : 121, "peak-rpm" : 4250, "city-mpg" : 20, "highway-mpg" : 25, "price" : 24565 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b031"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 189, "width" : 66.9, "height" : 55.7, "curb-weight" : 3230, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 16, "highway-mpg" : 22, "price" : 30760 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b032"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 103.5, "length" : 193.8, "width" : 67.9, "height" : 53.7, "curb-weight" : 3380, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 16, "highway-mpg" : 22, "price" : 41315 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b033"), "symboling" : 0, "normalized-losses" : "?", "make" : "bmw", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "rwd", "engine-location" : "front", "wheel-base" : 110, "length" : 197, "width" : 70.9, "height" : 56.3, "curb-weight" : 3505, "engine-type" : "ohc", "num-of-cylinders" : "six", "engine-size" : 209, "fuel-system" : "mpfi", "bore" : 3.62, "stroke" : 3.39, "compression-ratio" : 8, "horsepower" : 182, "peak-rpm" : 5400, "city-mpg" : 15, "highway-mpg" : 20, "price" : 36880 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b034"), "symboling" : 2, "normalized-losses" : 121, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 88.4, "length" : 141.1, "width" : 60.3, "height" : 53.2, "curb-weight" : 1488, "engine-type" : "l", "num-of-cylinders" : "three", "engine-size" : 61, "fuel-system" : "2bbl", "bore" : 2.91, "stroke" : 3.03, "compression-ratio" : 9.5, "horsepower" : 48, "peak-rpm" : 5100, "city-mpg" : 47, "highway-mpg" : 53, "price" : 5151 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b035"), "symboling" : 1, "normalized-losses" : 98, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 155.9, "width" : 63.6, "height" : 52, "curb-weight" : 1874, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 95, "fuel-system" : "2bbl", "bore" : 3.03, "stroke" : 3.11, "compression-ratio" : 9.6, "horsepower" : 70, "peak-rpm" : 5400, "city-mpg" : 38, "highway-mpg" : 43, "price" : 6295 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b036"), "symboling" : 0, "normalized-losses" : 81, "make" : "chevrolet", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 94.5, "length" : 158.8, "width" : 63.6, "height" : 52, "curb-weight" : 1909, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 90, "fuel-system" : "2bbl", "bore" : 3.03, "stroke" : 3.11, "compression-ratio" : 9.6, "horsepower" : 70, "peak-rpm" : 5400, "city-mpg" : 38, "highway-mpg" : 43, "price" : 6575 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b03e"), "symboling" : 1, "normalized-losses" : 158, "make" : "audi", "fuel-type" : "gas", "aspiration" : "turbo", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 105.8, "length" : 192.7, "width" : 71.4, "height" : 55.9, "curb-weight" : 3086, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 131, "fuel-system" : "mpfi", "bore" : 3.13, "stroke" : 3.4, "compression-ratio" : 8.3, "horsepower" : 140, "peak-rpm" : 5500, "city-mpg" : 17, "highway-mpg" : 20, "price" : 23875 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b03f"), "symboling" : 1, "normalized-losses" : "?", "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "wagon", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 105.8, "length" : 192.7, "width" : 71.4, "height" : 55.7, "curb-weight" : 2954, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 18920 }
+Type "it" for more
+> db.inventory.aggregate([{$group:{_id:"fuel-type"}}])
+{ db.inventory.mapReduce(function(){emit(this.^Cel-type,this.symboling);}function(key,values){return Array.sum(values)},{query:{curb-weight:
+bye
+gaurav@ubuntu:~$ db.inventory.aggregate({$match:{horsepower:110}})
+bash: syntax error near unexpected token `{$match:{horsepower:110}}'
+gaurav@ubuntu:~$ db.inventory.aggregate({$match:{horsepower:110}})
+bash: syntax error near unexpected token `{$match:{horsepower:110}}'
+gaurav@ubuntu:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("a4a48eeb-2bc4-4668-b9a2-548276a903e9") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] 
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] 
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] 
+> show dbs
+admin       0.000GB
+automobile  0.000GB
+config      0.000GB
+local       0.000GB
+> use automobile
+switched to db automobile
+> show collections
+inventory
+> db.inventory.mapreducefunction(){emit(this.fuel-type,this.symboling);}function(key,values){retdb.inventory.mapreducefunction(){emit(this.fuel-type,this.symboling);}function(key,values){retdb.inventory.ma^C
+bye
+gaurav@ubuntu:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("88fcfd33-c897-4155-aabc-53725019d1ea") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] 
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] 
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] 
+> show dbs
+admin       0.000GB
+automobile  0.000GB
+config      0.000GB
+local       0.000GB
+> show collections
+> use automobile
+switched to db automobile
+> show collections
+inventory
+> db.inventory.mapReduce(function(){emit(this.^Cel-type,this.symboling);}function(key,values){return Array.sum(values)},{query:{curb-weight:
+... ^C
+
+> db.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(values)},{query:curb-weight:"2954
+2021-04-24T08:46:48.461-0700 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:68
+> db.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){retdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){retdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){retdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){retdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){retdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){retdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){retdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(vdb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(values)},{query:                                                   ^C
+bye
+gaurav@ubuntu:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("a914cbf2-b0df-4356-b8c5-7d5709bfb94b") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] 
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-24T08:08:10.792-0700 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] 
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-24T08:08:12.993-0700 I CONTROL  [initandlisten] 
+> show dbs
+admin       0.000GB
+audb.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(values)},{query:curb-weight:"2954"},out:"cars"})
+2021-04-24T08:55:25.562-0700 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:68
+> db.inventory.mapReduce(function()emit(this,fuel-type,this.symboling);}function(key,values){return Array.sum(values)},{query:curb-weight:"2954"},out:"cars"})
+2021-04-24T08:55:37.785-0700 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:68
+> db.inventory.mapReduce(function(){emit(this,fuel-type,this.symboling);},function(key,values){return Array.sum(values)},{query:curb-weight:"2954"},out:"cars"})
+2021-04-24T08:57:06.246-0700 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:137
+> db.inventory.mapReduce(function(){emit(this,fuel-type,this.symboling);,function(key,values)}{return Array.sum(values)},{query:curb-weight:"2954"},out:"cars"})
+2021-04-24T08:57:55.095-0700 E QUERY    [thread1] SyntaxError: expected expression, got ',' @(shell):1:70
+> db.inventory.mapReduce(function(){emit(this,fuel-type,this.symboling);},function(key,values){return Array.sum(values)},{query:curb-weight:"2954"},out:"cars"})
+2021-04-24T08:58:57.818-0700 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:137
+> db.inventory.mapReduce(function(){emit(this.fuel-type,this.symboling);},functions(key,values){return Array.sum(values)},{query:{curb-weight:"2954"),out:"CARS"})
+2021-04-24T09:01:43.727-0700 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:93
+> db.inventory.mapReduce(function(){emit(this.fuel-type,this.symboling);},function(key,values){return Array.sum(values)},{query:{curb-weight:"2954"),out:"CARS"})
+2021-04-24T09:02:32.581-0700 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:131
+> db.inventory.mapReduce(function(){emit(this.fuel-type,this.symboling);},function(key,values){return Array.sum(values)},{query:{curb-weight:2954),out:"CARS"})
+2021-04-24T09:03:10.516-0700 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:131
+> db.inventory.mapReduce(function(){emit(this.fuel-type,this.symboling);},function(key,values){return Array.sum(values)},{query:{curb-weight:2954),out:"Speed"})
+2021-04-24T09:04:50.782-0700 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:131
+> db.inventory.mapReduce(function(){emit(this.width,this.symboling);},function(key,values){return Array.sum(values)},{query:{curb-weight:2954),out:"Speed"})
+2021-04-24T09:07:55.347-0700 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:127
+> db.inventory.aggregate({$match:{horsepower: 110}})
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02a"), "symboling" : 2, "normalized-losses" : "?", "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.8, "length" : 177.3, "width" : 66.3, "height" : 53.1, "curb-weight" : 2507, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 15250 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b02b"), "symboling" : 1, "normalized-losses" : 158, "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 105.8, "length" : 192.7, "width" : 71.4, "height" : 55.7, "curb-weight" : 2844, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 17710 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b03f"), "symboling" : 1, "normalized-losses" : "?", "make" : "audi", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "wagon", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 105.8, "length" : 192.7, "width" : 71.4, "height" : 55.7, "curb-weight" : 2954, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 25, "price" : 18920 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b0a6"), "symboling" : 3, "normalized-losses" : 150, "make" : "saab", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.1, "length" : 186.6, "width" : 66.5, "height" : 56.1, "curb-weight" : 2658, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 121, "fuel-system" : "mpfi", "bore" : 3.54, "stroke" : 3.07, "compression-ratio" : 9.31, "horsepower" : 110, "peak-rpm" : 5250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 11850 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b0a7"), "symboling" : 2, "normalized-losses" : 104, "make" : "saab", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.1, "length" : 186.6, "width" : 66.5, "height" : 56.1, "curb-weight" : 2695, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 121, "fuel-system" : "mpfi", "bore" : 3.54, "stroke" : 3.07, "compression-ratio" : 9.3, "horsepower" : 110, "peak-rpm" : 5250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 12170 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b0a8"), "symboling" : 3, "normalized-losses" : 150, "make" : "saab", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "two", "body-style" : "hatchback", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.1, "length" : 186.6, "width" : 66.5, "height" : 56.1, "curb-weight" : 2707, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 121, "fuel-system" : "mpfi", "bore" : 2.54, "stroke" : 2.07, "compression-ratio" : 9.3, "horsepower" : 110, "peak-rpm" : 5250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 15040 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b0a9"), "symboling" : 2, "normalized-losses" : 104, "make" : "saab", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 99.1, "length" : 186.6, "width" : 66.5, "height" : 56.1, "curb-weight" : 2758, "engine-type" : "ohc", "num-of-cylinders" : "four", "engine-size" : 121, "fuel-system" : "mpfi", "bore" : 3.54, "stroke" : 3.07, "compression-ratio" : 9.3, "horsepower" : 110, "peak-rpm" : 5250, "city-mpg" : 21, "highway-mpg" : 28, "price" : 15510 }
+{ "_id" : ObjectId("607d29c58c1df32d39e4b0e1"), "symboling" : 0, "normalized-losses" : "?", "make" : "volkswagen", "fuel-type" : "gas", "aspiration" : "std", "num-of-doors" : "four", "body-style" : "sedan", "drive-wheels" : "fwd", "engine-location" : "front", "wheel-base" : 100.4, "length" : 180.2, "width" : 66.9, "height" : 55.1, "curb-weight" : 2661, "engine-type" : "ohc", "num-of-cylinders" : "five", "engine-size" : 136, "fuel-system" : "mpfi", "bore" : 3.19, "stroke" : 3.4, "compression-ratio" : 8.5, "horsepower" : 110, "peak-rpm" : 5500, "city-mpg" : 19, "highway-mpg" : 24, "price" : 13295 }
+> 
+
+
+
